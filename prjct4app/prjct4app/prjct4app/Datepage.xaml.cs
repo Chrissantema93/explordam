@@ -16,11 +16,19 @@ namespace prjct4app
         {
             InitializeComponent();
         }
-        async void OnButtonClicked(object sender, EventArgs args)
+        //async void OnButtonClicked(object sender, EventArgs args)
+        //{
+        //    Button button = (Button)sender;
+        //    await DisplayAlert("Clicked", "page: " + button.Text + " bestaat nog niet", "Ok");
+        //}
+
+        async void StartPageVisitor(object sender, EventArgs args)
         {
             Button button = (Button)sender;
-            //await Navigation.PushAsync(new Page1());
-            await DisplayAlert("Clicked", "page: " + button.Text + " bestaat nog niet", "Ok");
+            if (button.Text == "Doorgaan")
+            {
+                await Navigation.PushModalAsync(new InteressePage());
+            }
         }
     }
 }

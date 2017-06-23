@@ -27,12 +27,12 @@ namespace prjct4app
             Button button = (Button)sender;
             if (button.Text == "Start")
             {
-                await Navigation.PushAsync(new Datepage());
+                await Navigation.PushModalAsync(new Datepage());
             }
 
             else if (button.Text == "Info")
             {
-                await Navigation.PushAsync(new InfoPage());
+                await Navigation.PushModalAsync(new InfoPage());
             }
 
             //else if (button.Text == "Opties")
