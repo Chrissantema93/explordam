@@ -12,15 +12,37 @@ namespace prjct4app
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Datepage : ContentPage
     {
+        DateTime date;
+        TimeSpan begintijd;
+        TimeSpan eindtijd;
+
         public Datepage()
         {
             InitializeComponent();
+            DatumSelector.MinimumDate = DateTime.Now.ToLocalTime();
+            DatumSelector.Date = DateTime.Now.ToLocalTime();
         }
         async void OnButtonClicked(object sender, EventArgs args)
         {
             Button button = (Button)sender;
-            //await Navigation.PushAsync(new Page1());
-            await DisplayAlert("Clicked", "page: " + button.Text + " bestaat nog niet", "Ok");
+            await Navigation.PushAsync(new Result(date, begintijd, eindtijd));
+            //await DisplayAlert("Clicked", "page: " + button.Text + " bestaat nog niet", "Ok");
+        }
+
+        private void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
+        {
+            date = e.NewDate;
+        }
+
+        //PropertyChanged wordt te vaak aangeroepen maar kan geen functie vinden voor alleen tijdchanged
+        private void BeginTijd_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            begintijd = BeginTijd.Time;
+        }
+
+        private void EindTijd_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            eindtijd = EindTijd.Time;
         }
     }
 }
