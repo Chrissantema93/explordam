@@ -25,7 +25,7 @@ namespace prjct4app
         async void OnButtonClicked(object sender, EventArgs args)
         {
             Button button = (Button)sender;
-            await Navigation.PushAsync(new Result(date, begintijd, eindtijd));
+            await Navigation.PushAsync(new Results(date, begintijd, eindtijd));
             //await DisplayAlert("Clicked", "page: " + button.Text + " bestaat nog niet", "Ok");
         }
 
