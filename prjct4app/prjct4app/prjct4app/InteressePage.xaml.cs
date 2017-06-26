@@ -12,9 +12,16 @@ namespace prjct4app
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class InteressePage : ContentPage
     {
-        public InteressePage()
+        private DateTime date;
+        private TimeSpan begintijd;
+        private TimeSpan eindtijd;
+
+        public InteressePage(DateTime date, TimeSpan begintijd, TimeSpan eindtijd)
         {
             InitializeComponent();
+            this.date = date;
+            this.begintijd = begintijd;
+            this.eindtijd = eindtijd;
         }
 
         async void StartPageVisitor(object sender, EventArgs args)

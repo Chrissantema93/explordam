@@ -31,13 +31,12 @@ namespace prjct4app
         async void StartPageVisitor(object sender, EventArgs args)
         {
             Button button = (Button)sender;
-<<<<<<< HEAD
             if (button.Text == "Doorgaan")
             {
-                await Navigation.PushModalAsync(new InteressePage());
+                await Navigation.PushModalAsync(new InteressePage(this.date, this.begintijd, this.eindtijd));
             }
-=======
-            await Navigation.PushAsync(new Results(date, begintijd, eindtijd));
+
+            await Navigation.PushAsync(new InteressePage(date, begintijd, eindtijd));
             //await DisplayAlert("Clicked", "page: " + button.Text + " bestaat nog niet", "Ok");
         }
 
@@ -55,7 +54,7 @@ namespace prjct4app
         private void EindTijd_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             eindtijd = EindTijd.Time;
->>>>>>> refs/remotes/origin/Functionality
+
         }
     }
 }
