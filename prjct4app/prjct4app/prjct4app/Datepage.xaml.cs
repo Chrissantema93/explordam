@@ -35,8 +35,6 @@ namespace prjct4app
             {
                 await Navigation.PushModalAsync(new InteressePage(this.date, this.begintijd, this.eindtijd));
             }
-
-            await Navigation.PushAsync(new InteressePage(date, begintijd, eindtijd));
             //await DisplayAlert("Clicked", "page: " + button.Text + " bestaat nog niet", "Ok");
         }
 
