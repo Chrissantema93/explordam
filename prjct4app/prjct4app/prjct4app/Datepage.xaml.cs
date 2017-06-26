@@ -22,10 +22,19 @@ namespace prjct4app
             DatumSelector.MinimumDate = DateTime.Now.ToLocalTime();
             DatumSelector.Date = DateTime.Now.ToLocalTime();
         }
-        async void OnButtonClicked(object sender, EventArgs args)
+        //async void OnButtonClicked(object sender, EventArgs args)
+        //{
+        //    Button button = (Button)sender;
+        //    await DisplayAlert("Clicked", "page: " + button.Text + " bestaat nog niet", "Ok");
+        //}
+
+        async void StartPageVisitor(object sender, EventArgs args)
         {
             Button button = (Button)sender;
-            await Navigation.PushAsync(new Results(date, begintijd, eindtijd));
+            if (button.Text == "Doorgaan")
+            {
+                await Navigation.PushModalAsync(new InteressePage(this.date, this.begintijd, this.eindtijd));
+            }
             //await DisplayAlert("Clicked", "page: " + button.Text + " bestaat nog niet", "Ok");
         }
 
@@ -43,6 +52,7 @@ namespace prjct4app
         private void EindTijd_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             eindtijd = EindTijd.Time;
+
         }
     }
 }
