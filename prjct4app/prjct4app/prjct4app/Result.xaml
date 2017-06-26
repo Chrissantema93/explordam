@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="prjct4app.Result">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="datum"
+                   Text="Tijd van vertrek" 
+                   FontSize="Large"
+                   HorizontalOptions="Center"/>
+            <Label x:Name="begintijd"
+                   Text="Tijd van vertrek" 
+                   FontSize="Large"
+                   HorizontalOptions="Center"/>
+            <Label x:Name="eindtijd"
+                   Text="Tijd van vertrek" 
+                   FontSize="Large"
+                   HorizontalOptions="Center"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
