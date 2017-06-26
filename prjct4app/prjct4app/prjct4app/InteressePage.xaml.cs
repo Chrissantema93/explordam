@@ -15,6 +15,12 @@ namespace prjct4app
         private DateTime date;
         private TimeSpan begintijd;
         private TimeSpan eindtijd;
+        private bool kunst;
+        private bool natuur;
+        private bool architectuur;
+        private bool restaurant;
+        private bool overige;
+        
 
         public InteressePage(DateTime date, TimeSpan begintijd, TimeSpan eindtijd)
         {
@@ -22,6 +28,7 @@ namespace prjct4app
             this.date = date;
             this.begintijd = begintijd;
             this.eindtijd = eindtijd;
+           
         }
 
         async void StartPageVisitor(object sender, EventArgs args)
@@ -31,6 +38,14 @@ namespace prjct4app
             {
                 //await Navigation.PushModalAsync(new InteressePage());
                 await DisplayAlert("Clicked", "page: " + button.Text + " bestaat nog niet", "Ok");
+                await DisplayAlert("datum", date.ToString(), "cancel");
+                await DisplayAlert("begintijd", begintijd.ToString(), "cancel");
+                await DisplayAlert("eindtijd", eindtijd.ToString(), "cancel");
+                await DisplayAlert("kunst", Kunst.IsToggled.ToString(), "cancel");
+                await DisplayAlert("natuur", Natuur.IsToggled.ToString(), "cancel");
+                await DisplayAlert("architectuur", Architectuur.IsToggled.ToString(), "cancel");
+                await DisplayAlert("restaurant", Restaurant.IsToggled.ToString(), "cancel");
+                await DisplayAlert("overig", Overige.IsToggled.ToString(), "cancel");
             }
         }
     }
