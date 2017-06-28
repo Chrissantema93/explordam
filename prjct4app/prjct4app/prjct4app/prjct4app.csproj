@@ -48,6 +48,7 @@
     <Compile Include="InteressePage.xaml.cs">
       <DependentUpon>InteressePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Iterator.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
