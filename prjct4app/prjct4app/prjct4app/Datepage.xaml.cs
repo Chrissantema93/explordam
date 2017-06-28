@@ -33,26 +33,15 @@ namespace prjct4app
             Button button = (Button)sender;
             if (button.Text == "Doorgaan")
             {
-                await Navigation.PushModalAsync(new InteressePage(this.date, this.begintijd, this.eindtijd));
+                if (BeginTijd.Time.CompareTo(EindTijd.Time) >= 0)
+                {
+                    await DisplayAlert("Verkeerde tijden", "Aankomst later dan Vertrek", "Ok");
+                }
+                else { await Navigation.PushModalAsync(new InteressePage(DatumSelector.Date, BeginTijd.Time, EindTijd.Time)); }
+                
             }
             //await DisplayAlert("Clicked", "page: " + button.Text + " bestaat nog niet", "Ok");
         }
 
-        private void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
-        {
-            date = e.NewDate;
-        }
-
-        //PropertyChanged wordt te vaak aangeroepen maar kan geen functie vinden voor alleen tijdchanged
-        private void BeginTijd_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            begintijd = BeginTijd.Time;
-        }
-
-        private void EindTijd_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            eindtijd = EindTijd.Time;
-
-        }
     }
 }

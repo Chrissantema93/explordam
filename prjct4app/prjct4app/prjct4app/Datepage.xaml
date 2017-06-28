@@ -14,7 +14,6 @@
                         HorizontalOptions="Center"
                         MinimumDate="12/31/2017"
                         Date="12/31/2017"
-                        DateSelected="DatePicker_DateSelected"
                         />
             <Label Text="Tijd van aankomst" 
                    FontSize="Large"
@@ -22,16 +21,14 @@
             <TimePicker
                    x:Name="BeginTijd"
                    HorizontalOptions="Center"
-                   Time="23:00"
-                   PropertyChanged="BeginTijd_PropertyChanged"
+                   Time="00:00"
                    />
             <Label Text="Tijd van vertrek" 
                    FontSize="Large"
                    HorizontalOptions="Center"/>
             <TimePicker x:Name="EindTijd"
                         HorizontalOptions="Center"
-                        Time="00:00"
-                        PropertyChanged="EindTijd_PropertyChanged"
+                        Time="12:00"
                         />
 
             <Button Text="Doorgaan"
