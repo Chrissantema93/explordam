@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Xamarindb
+namespace prjct4app
 {
     namespace WebServiceDetails
     {

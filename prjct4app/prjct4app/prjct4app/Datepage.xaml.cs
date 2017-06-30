@@ -15,6 +15,8 @@ namespace prjct4app
         DateTime date;
         TimeSpan begintijd;
         TimeSpan eindtijd;
+        
+        
 
         public Datepage()
         {
@@ -32,6 +34,7 @@ namespace prjct4app
         {
             Button button = (Button)sender;
             if (button.Text == "Doorgaan")
+            
             {
                 if (BeginTijd.Time.CompareTo(EindTijd.Time) >= 0)
                 {

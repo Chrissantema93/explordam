@@ -10,7 +10,7 @@ using Newtonsoft.Json.Linq;
 using System.Net;
 using System.Diagnostics;
 
-namespace Xamarindb
+namespace prjct4app
 {
     namespace WebServiceDetails
     {
@@ -31,12 +31,14 @@ namespace Xamarindb
                     var details = JsonConvert.DeserializeObject<RootObject>(json.ToString());
 
                     var zondag = details.result.opening_hours.periods[0];
-                   //Debug.WriteLine("opent op " + zondag.open.day + " om " + zondag.open.time + " en sluit om " + zondag.close.time);
+                    Debug.WriteLine("opent op " + zondag.open.day + " om " + zondag.open.time + " en sluit om " + zondag.close.time);
                     Debug.WriteLine(details.result.rating);
+                    
                     return details;
                 }
                 catch (System.Exception exception)
                 {
+                    Debug.WriteLine("lopdifoaugfouyasgfodsgfoagsfouysagfuyasgfudgafuyvfuyyasfuhdbasufyvaufvausdfbuasdfbuasyvdf");
                     return null;
                 }
 

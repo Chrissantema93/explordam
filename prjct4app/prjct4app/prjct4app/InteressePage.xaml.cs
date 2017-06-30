@@ -38,7 +38,7 @@ namespace prjct4app
             {
                 //await Navigation.PushModalAsync(new InteressePage());
                 await DisplayAlert("Clicked", "page: " + button.Text + " bestaat nog niet", "Ok");
-                await DisplayAlert("datum", date.ToString(), "cancel");
+                await DisplayAlert("datum", date.DayOfWeek.ToString(), "cancel");
                 await DisplayAlert("begintijd", begintijd.ToString(), "cancel");
                 await DisplayAlert("eindtijd", eindtijd.ToString(), "cancel");
                 await DisplayAlert("kunst", Kunst.IsToggled.ToString(), "cancel");
