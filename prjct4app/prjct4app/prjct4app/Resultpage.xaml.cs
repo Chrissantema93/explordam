@@ -13,9 +13,18 @@ namespace prjct4app
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Resultpage : ContentPage
     {
-        public Resultpage()
+        private DateTime date;
+        private TimeSpan begintijd;
+        private TimeSpan eindtijd;
+        private bool kunst;
+        private bool natuur;
+        private bool architectuur;
+        private bool restaurant;
+        private bool overige;
+        public Resultpage(DateTime date, TimeSpan beginstijd, TimeSpan eindtijd, bool kunst, bool natuur, bool architectuur, bool restaurant, bool overige)
         {
             InitializeComponent();
+
         }
 
         public async void OnNewButtonClicked(object sender, EventArgs args)
