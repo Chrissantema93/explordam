@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using SQLite.Net.Platform.XamarinAndroid;
 
 namespace prjct4app.Droid
 {
@@ -20,7 +21,10 @@ namespace prjct4app.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            LoadApplication(new App());
+                
+            string dbPath = FileAccessHelper.GetLocalFilePath("people.db3");
+            LoadApplication(new prjct4app.App(dbPath, new SQLitePlatformAndroid()));
+
         }
     }
 }

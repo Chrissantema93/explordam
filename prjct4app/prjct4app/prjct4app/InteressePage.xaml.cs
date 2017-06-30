@@ -36,7 +36,7 @@ namespace prjct4app
             Button button = (Button)sender;
             if (button.Text == "Doorgaan")
             {
-                //await Navigation.PushModalAsync(new InteressePage());
+                await Navigation.PushModalAsync(new Resultpage());
                 await DisplayAlert("Clicked", "page: " + button.Text + " bestaat nog niet", "Ok");
                 await DisplayAlert("datum", date.ToString(), "cancel");
                 await DisplayAlert("begintijd", begintijd.ToString(), "cancel");
