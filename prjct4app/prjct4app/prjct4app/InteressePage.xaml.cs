@@ -31,21 +31,23 @@ namespace prjct4app
            
         }
 
-        async void StartPageVisitor(object sender, EventArgs args)
+
+
+        public async void Button_Clicked(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             if (button.Text == "Doorgaan")
             {
-                await Navigation.PushModalAsync(new Resultpage());
-                await DisplayAlert("Clicked", "page: " + button.Text + " bestaat nog niet", "Ok");
-                await DisplayAlert("datum", date.ToString(), "cancel");
-                await DisplayAlert("begintijd", begintijd.ToString(), "cancel");
-                await DisplayAlert("eindtijd", eindtijd.ToString(), "cancel");
-                await DisplayAlert("kunst", Kunst.IsToggled.ToString(), "cancel");
-                await DisplayAlert("natuur", Natuur.IsToggled.ToString(), "cancel");
-                await DisplayAlert("architectuur", Architectuur.IsToggled.ToString(), "cancel");
-                await DisplayAlert("restaurant", Restaurant.IsToggled.ToString(), "cancel");
-                await DisplayAlert("overig", Overige.IsToggled.ToString(), "cancel");
+                await Navigation.PushModalAsync(new Resultpage(date, begintijd, eindtijd, Kunst.IsToggled, Natuur.IsToggled, Architectuur.IsToggled, Restaurant.IsToggled, Overige.IsToggled));
+                //await DisplayAlert("Clicked", "page: " + button.Text + " bestaat nog niet", "Ok");
+                //await DisplayAlert("datum", date.ToString(), "cancel");
+                //await DisplayAlert("begintijd", begintijd.ToString(), "cancel");
+                //await DisplayAlert("eindtijd", eindtijd.ToString(), "cancel");
+                //await DisplayAlert("kunst", Kunst.IsToggled.ToString(), "cancel");
+                //await DisplayAlert("natuur", Natuur.IsToggled.ToString(), "cancel");
+                //await DisplayAlert("architectuur", Architectuur.IsToggled.ToString(), "cancel");
+                //await DisplayAlert("restaurant", Restaurant.IsToggled.ToString(), "cancel");
+                //await DisplayAlert("overig", Overige.IsToggled.ToString(), "cancel");
             }
         }
     }

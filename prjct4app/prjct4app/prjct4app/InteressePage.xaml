@@ -44,7 +44,7 @@
             <Button Text="Doorgaan"
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
-                    Clicked="StartPageVisitor" />
+                    Clicked="Button_Clicked" />
 
         </StackLayout>
     </ContentPage.Content>
