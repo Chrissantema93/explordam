@@ -38,7 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Events.cs" />
+    <Compile Include="Event.cs" />
     <Compile Include="RefineResults.cs" />
     <Compile Include="ReturnListResult.cs" />
     <Compile Include="Datepage.xaml.cs">
