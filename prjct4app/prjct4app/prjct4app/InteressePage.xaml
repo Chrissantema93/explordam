@@ -15,28 +15,28 @@
                    Margin="0,0,0,30"
                    />
             <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
-                <Switch x:Name="Kunst" HorizontalOptions="Start" Margin="50,0,0,0" IsToggled="False"/>
-                <Label Text="Kunst" />
-            </StackLayout>
-
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
-                <Switch x:Name="Natuur" HorizontalOptions="Start" Margin="50,0,0,0" IsToggled="False"/>
-                <Label Text="Natuur" />
-            </StackLayout>
-
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
-                <Switch x:Name="Architectuur" HorizontalOptions="Start" Margin="50,0,0,0" IsToggled="False"/>
-                <Label Text="Architectuur" />
+                <Switch x:Name="Museum" HorizontalOptions="Start" Margin="50,0,0,0" IsToggled="False"/>
+                <Label Text="Museum" />
             </StackLayout>
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
                 <Switch x:Name="Restaurant" HorizontalOptions="Start" Margin="50,0,0,0" IsToggled="False"/>
                 <Label Text="Restaurant" />
             </StackLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                <Switch x:Name="Park" HorizontalOptions="Start" Margin="50,0,0,0" IsToggled="False"/>
+                <Label Text="Park" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                <Switch x:Name="Nightclub" HorizontalOptions="Start" Margin="50,0,0,0" IsToggled="False"/>
+                <Label Text="Nightclub" />
+            </StackLayout>
             
             <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
-                <Switch x:Name="Overige" HorizontalOptions="Start" Margin="50,0,0,0" IsToggled="False"/>
-                <Label Text="Overige" />
+                <Switch x:Name="Shopping" HorizontalOptions="Start" Margin="50,0,0,0" IsToggled="False"/>
+                <Label Text="Shopping" />
             </StackLayout>
 
             

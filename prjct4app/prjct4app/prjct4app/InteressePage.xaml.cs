@@ -13,8 +13,8 @@ namespace prjct4app
     public partial class InteressePage : ContentPage
     {
         private DateTime date;
-        private TimeSpan begintijd;
-        private TimeSpan eindtijd;
+        private int begintijd;
+        private int eindtijd;
         private bool kunst;
         private bool natuur;
         private bool architectuur;
@@ -26,8 +26,8 @@ namespace prjct4app
         {
             InitializeComponent();
             this.date = date;
-            this.begintijd = begintijd;
-            this.eindtijd = eindtijd;
+            this.begintijd = (begintijd.Hours*100) + (begintijd.Minutes);
+            this.eindtijd = (eindtijd.Hours*100) + (eindtijd.Minutes);
            
         }
 
@@ -38,10 +38,11 @@ namespace prjct4app
             Button button = (Button)sender;
             if (button.Text == "Doorgaan")
             {
-                await Navigation.PushModalAsync(new Resultpage(date, begintijd, eindtijd, Kunst.IsToggled, Natuur.IsToggled, Architectuur.IsToggled, Restaurant.IsToggled, Overige.IsToggled));
+                await DisplayAlert("begintijd", begintijd.ToString(), "cancel");
+                await Navigation.PushModalAsync(new Resultpage(date, begintijd, eindtijd, Museum.IsToggled, Restaurant.IsToggled, Park.IsToggled, Nightclub.IsToggled, Shopping.IsToggled));
                 //await DisplayAlert("Clicked", "page: " + button.Text + " bestaat nog niet", "Ok");
                 //await DisplayAlert("datum", date.ToString(), "cancel");
-                //await DisplayAlert("begintijd", begintijd.ToString(), "cancel");
+                
                 //await DisplayAlert("eindtijd", eindtijd.ToString(), "cancel");
                 //await DisplayAlert("kunst", Kunst.IsToggled.ToString(), "cancel");
                 //await DisplayAlert("natuur", Natuur.IsToggled.ToString(), "cancel");

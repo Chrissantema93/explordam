@@ -38,9 +38,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Events.cs" />
+    <Compile Include="RefineResults.cs" />
+    <Compile Include="ReturnListResult.cs" />
     <Compile Include="Datepage.xaml.cs">
       <DependentUpon>Datepage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DaytoInt.cs" />
     <Compile Include="ICloseApp.cs" />
     <Compile Include="InfoPage.xaml.cs">
       <DependentUpon>InfoPage.xaml</DependentUpon>
@@ -54,6 +58,7 @@
     </Compile>
     <Compile Include="Models\Person.cs" />
     <Compile Include="PersonRepository.cs" />
+    <Compile Include="Places.cs" />
     <Compile Include="Resultpage.xaml.cs">
       <DependentUpon>Resultpage.xaml</DependentUpon>
     </Compile>

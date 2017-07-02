@@ -14,15 +14,33 @@ namespace prjct4app
     public partial class Resultpage : ContentPage
     {
         private DateTime date;
-        private TimeSpan begintijd;
-        private TimeSpan eindtijd;
-        private bool kunst;
-        private bool natuur;
-        private bool architectuur;
-        private bool restaurant;
-        private bool overige;
-        public Resultpage(DateTime date, TimeSpan beginstijd, TimeSpan eindtijd, bool kunst, bool natuur, bool architectuur, bool restaurant, bool overige)
+        private int begintijd;
+        private int eindtijd;
+        private List<string> intresses;
+        private ReturnListApiResult ApiResult;
+        private Iterator<WebServiceDetails.Result> resultlist;
+
+        public Resultpage(DateTime date, int begintijd, int eindtijd, bool museum, bool restaurant, bool park, bool nightclub, bool shopping)
         {
+            intresses = new List<string>();
+            if (museum) { intresses.Add("Museum"); }
+            if (restaurant) { intresses.Add("Restaurant"); }
+            if (park) { intresses.Add("Park"); }
+            if (nightclub) { intresses.Add("Nightclub"); }
+            if (shopping) { intresses.Add("Shopping"); }
+
+            ApiResult = new ReturnListApiResult(DaytoInt.daytoint(date.DayOfWeek), begintijd, eindtijd);
+
+            foreach (string intresse in intresses)
+            {
+                while (ApiResult.GetList().Visit(() => true, results => false))
+                {
+                    //ApiResult.AddToResultList()
+                }
+            }
+
+            ApiResult.GetList().Visit(() => { } , (results) => resultlist = results);
+            
             InitializeComponent();
 
         }

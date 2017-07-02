@@ -24,7 +24,7 @@ namespace prjct4app
     }
     public class Some<T> : Option<T>
     {
-        T value;
+        public T value;
         public Some(T value)
         {
             this.value = value;
