@@ -8,38 +8,17 @@ namespace prjct4app
 {
     interface ReturnListResult<T>
     {
-        void AddToResultList(T data);
-        Option<Iterator<T>> GetList();
+        void AddToResultList(WebServiceDetails.Result data);
+        Option<List<T>> GetList();
     }
 
-    class ReturnIntResult : ReturnListResult<int>
-    {
-        public ListIterator<int> datalijst = new ListIterator<int>();
-        public void AddToResultList(int data)
-        {
-            datalijst.Add(data);
-        }
-
-        public Option<Iterator<int>> GetList()
-        {
-            if (datalijst.source.Count > 0)
-            {
-                return new Some<Iterator<int>>(datalijst);
-            }
-
-            else
-            {
-                return new None<Iterator<int>>();
-            }
-        }
-    }
-    class ReturnListApiResult : ReturnListResult<WebServiceDetails.Result>
+    class ReturnListApiResult : ReturnListResult<Event>
     {
         int Day;
         int Aankomsttijd;
         int Vertektijd;
         int MaxItems;
-        public ListIterator<WebServiceDetails.Result> datalijst = new ListIterator<WebServiceDetails.Result>();
+        public List<Event> datalijst = new List<Event>();
         
 
         public ReturnListApiResult(int day, int aankomsttijd, int vertrektijd)
@@ -56,21 +35,22 @@ namespace prjct4app
             {
                 if(Convert.ToInt32(data.opening_hours.periods[Day].open.time) <= Aankomsttijd && Convert.ToInt32(data.opening_hours.periods[Day].close.time) >= Vertektijd)
                 {
-                    datalijst.Add(data);
+                    Event evnt = new Event(data.name, 0, 0, data.adr_address, data.types[0]);
+                    datalijst.Add(evnt);
                 }
             }   
         }
 
-        public Option<Iterator<WebServiceDetails.Result>> GetList()
+        public Option<List<Event>> GetList()
         {
-            if(this.datalijst.source.Count >= MaxItems)
+            if(this.datalijst.Count >= MaxItems)
             {
-                return new Some<Iterator<WebServiceDetails.Result>>(datalijst);
+                return new Some<List<Event>>(datalijst);
             }
 
             else
             {
-                return new None<Iterator<WebServiceDetails.Result>>();
+                return new None<List<Event>>();
             }
         }
 

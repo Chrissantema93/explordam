@@ -19,8 +19,9 @@ namespace prjct4app
         private List<string> intresses;
         private ReturnListApiResult ApiResult;
         private RefineResults refine;
-        private Iterator<WebServiceDetails.Result> resultlist;
-        private Iterator<Event> eventlist;
+        private List<WebServiceDetails.Result> resultlist;
+        private List<Event> eventlist;
+        WebServiceDetails.PlaceDetails  placedetails = new WebServiceDetails.PlaceDetails();
 
         public Resultpage(DateTime date, int begintijd, int eindtijd, bool museum, bool restaurant, bool park, bool nightclub, bool shopping)
         {
@@ -33,20 +34,22 @@ namespace prjct4app
             
 
             ApiResult = new ReturnListApiResult(DaytoInt.daytoint(date.DayOfWeek), begintijd, eindtijd);
+            placedetails.PlaceDetailsWebRequest();
 
-            foreach (string intresse in intresses)
-            {
-                while (ApiResult.GetList().Visit(() => true, results => false))
-                {
-                    //ApiResult.AddToResultList()
-                }
-            }
+            //foreach (string intresse in intresses)
+            //{
+            //    while (ApiResult.GetList().Visit(() => true, results => false))
+            //    {
+            //        ApiResult.AddToResultList(placedetails.PlaceDetailsWebRequest());
+            //    }
+            //}
 
-            ApiResult.GetList().Visit(() => { } , (results) => resultlist = results);
+            //ApiResult.GetList().Visit(() => { } , (results) => eventlist = results);
 
-            refine = new RefineResults(resultlist, begintijd, eindtijd);
-            eventlist = refine.Refine();
+            //refine = new RefineResults(resultlist, begintijd, eindtijd);
+            //eventlist = refine.Refine();
             InitializeComponent();
+            
 
         }
 
