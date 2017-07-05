@@ -15,17 +15,18 @@ namespace prjct4app
     public partial class Resultpage : ContentPage
     {
         private DateTime date;
-        private int begintijd;
-        private int eindtijd;
+        private int begintijd { get; set; }
+        private int eindtijd { get; set; }
         private List<string> intresses;
-        private ReturnListApiResult ApiResult;
-        private RefineResults refine;
-        private Iterator<WebServiceDetails.Result> resultlist;
-        private Iterator<Event> eventlist;
+        private RefineResults refine { get; set; }
+
+
         
 
         public Resultpage(DateTime date, int begintijd, int eindtijd, bool museum, bool restaurant, bool park, bool nightclub, bool shopping)
         {
+            this.begintijd = begintijd;
+            this.eindtijd = eindtijd;
             intresses = new List<string>();
             if (museum) { intresses.Add("Museum"); }
             if (park) { intresses.Add("Park"); }
@@ -34,7 +35,7 @@ namespace prjct4app
             if (nightclub) { intresses.Add("Nightclub"); }
 
             
-            ApiResult = new ReturnListApiResult(DaytoInt.daytoint(date.DayOfWeek), begintijd, eindtijd);
+    
 
 
             //foreach (string intresse in intresses)
@@ -66,12 +67,15 @@ namespace prjct4app
 
         public async void OnGetButtonClicked(object sender, EventArgs args)
         {
-            List<Result> UneListeDuResults = new List<Result>();
+            List<Resultaat> UneListeDuResults = new List<Resultaat>();
             PlaceDetails DetailGetter = new PlaceDetails();
             List<string> placeids = new List<string>();
+            refine = new RefineResults(begintijd, eindtijd, DaytoInt.daytoint(date.DayOfWeek));
             placeids.Add("ChIJvQBNdJ80xEcRmNuMeHpljHw");
+            //placeids.Add("ChIJvQBNdJ80xEcRmNuMeHpljHw");
             placeids.Add("ChIJ5URIl6I0xEcRdDTjK9tVy0Q");
             placeids.Add("ChIJxwEpkI00xEcRrRc-GRDUc0M");
+            
 
             foreach (string placeid in placeids)
             {
@@ -80,10 +84,17 @@ namespace prjct4app
                 //{
                 //    UneListeDuResults.Add(item);
                 //}
-                UneListeDuResults.Add((await DetailGetter.PlaceDetailsWebRequest(placeid)).result);
-            }
+                System.Diagnostics.Debug.WriteLine(placeid);
+                refine.FilterAsync(UneListeDuResults, await DetailGetter.PlaceDetailsWebRequest(placeid));
 
-            ObservableCollection<Result> UneListeDuResultsCollection = new ObservableCollection<Result>(UneListeDuResults);
+
+            }
+            for (int i = 0; i < UneListeDuResults.Count - 1; i++)
+            {
+                await UneListeDuResults[i].afstandresultaatAsync(UneListeDuResults[i+1]);
+                System.Diagnostics.Debug.WriteLine("POPO" + UneListeDuResults[i].afstandvolgende);
+            }
+            ObservableCollection<Resultaat> UneListeDuResultsCollection = new ObservableCollection<Resultaat>(UneListeDuResults);
             peopleList.ItemsSource = UneListeDuResultsCollection;
         }
     }

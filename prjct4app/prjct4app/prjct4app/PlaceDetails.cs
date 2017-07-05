@@ -22,6 +22,7 @@ namespace prjct4app
 
             public async Task<RootObject> PlaceDetailsWebRequest(string placeid)
             {
+
                 try
                 {
                     var client = new HttpClient();
@@ -34,11 +35,12 @@ namespace prjct4app
 
                     return details;
                 }
-                catch (System.Exception exception)
+                
+                catch (System.Exception exception) //dit crasht
                 {
-                    return null;
+                    return new RootObject();
                 }
-            }
+            }   
         }
     }
 }

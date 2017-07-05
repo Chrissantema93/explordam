@@ -38,9 +38,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Event.cs" />
+    <Compile Include="Distances.cs" />
     <Compile Include="PlaceDetails.cs" />
+    <Compile Include="PlaceDistance.cs" />
     <Compile Include="RefineResults.cs" />
+    <Compile Include="Resultaat.cs" />
     <Compile Include="ReturnListResult.cs" />
     <Compile Include="Datepage.xaml.cs">
       <DependentUpon>Datepage.xaml</DependentUpon>

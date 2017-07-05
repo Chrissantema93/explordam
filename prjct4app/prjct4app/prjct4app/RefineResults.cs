@@ -3,131 +3,101 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
+using prjct4app.WebServiceDetails;
 
 
 namespace prjct4app
 {
     class RefineResults
     {
-        private Iterator<WebServiceDetails.Result> iterator;
-        private ListIterator<Event> ListEvents = new ListIterator<Event>();
-        WebServiceDetails.Result result;
-        int aankomstijd;
-        int vertrektijd;
-        int totaletijd;
-        int huidigetijd;
-        bool museum;
-        bool park;
-        bool shopping;
-        bool restaurant;
-        bool nightclub;
+        int aankomsttijd { get; set; }
+        int vertrektijd { get; set; }
+        int day { get; set; }
+        int totaletijd { get; set; }
+        int huidigetijd { get; set; }
+        RootObject rootobject { get; set; }
+        bool museum = true;
+        bool park = true;
+        bool shopping = true;
+        bool restaurant = true;
+        bool nightclub = true;
+        PlaceDetails placedetails = new PlaceDetails();
 
-        public RefineResults(Iterator<WebServiceDetails.Result> iterator, int aankomstijd, int vertrektijd)
+        public RefineResults(int aankomsttijd, int vertrektijd, int day)
         {
-            this.aankomstijd = aankomstijd;
+            this.day = day;
+            this.aankomsttijd = aankomsttijd;
             this.vertrektijd = vertrektijd;
-            this.totaletijd = vertrektijd - aankomstijd;
-            this.huidigetijd = aankomstijd;
-            this.iterator = iterator;
+            this.totaletijd = vertrektijd - aankomsttijd;
+            this.huidigetijd = aankomsttijd;
         }
 
-        public Iterator<Event> Refine()
+        public async Task FilterAsync(List<Resultaat> resultaatlijst, RootObject rootobject) //List<string> placeids)
         {
-            while (iterator.GetCurrent().Visit(() => false, (result) => true))
-            {
-                iterator.GetCurrent().Visit(() => { }, (result) => { this.result = result; });
 
-                if (huidigetijd < (vertrektijd - 200))
+            //foreach (string placeid in placeids)
+            //{
+            //    rootobject = await placedetails.PlaceDetailsWebRequest(placeid);
+                
+
+
+                try
                 {
-                    if (0 <= huidigetijd && huidigetijd < 1000)
+                    Debug.WriteLine(Convert.ToInt32(rootobject.result.opening_hours.periods[0].open.time).ToString() + " " + aankomsttijd.ToString());
+                    Debug.WriteLine(Convert.ToInt32(rootobject.result.opening_hours.periods[0].close.time).ToString() + " " + vertrektijd.ToString());
+                    if (aankomsttijd <= Convert.ToInt32(rootobject.result.opening_hours.periods[day].open.time) || Convert.ToInt32(rootobject.result.opening_hours.periods[0].close.time) >= vertrektijd)
                     {
-                        foreach (string type in result.types)
+
+                        foreach (string type in rootobject.result.types)
                         {
-                            if (type == "Park" && park)
+                            Debug.WriteLine(rootobject.result.name + " " + type);
+
+                            if (type == "park" || type == "art_galary" && park)
                             {
                                 park = false;
 
-                                ListEvents.Add(new Event(result.name, huidigetijd, huidigetijd + 200, result.adr_address, type));
+                                resultaatlijst.Add(new Resultaat(rootobject));
 
                             }
-                        }
-                    }
 
-                    
-                    if (1000 <= huidigetijd && huidigetijd < 1800)
-                    {
-                        foreach (string type in result.types)
-                        {
-                            if (type == "Museum" && museum)
+                            else if (type == "museum" && museum)
                             {
                                 museum = false;
 
-                                ListEvents.Add(new Event(result.name, huidigetijd, huidigetijd + 200, result.adr_address, type));
-
+                                resultaatlijst.Add(new Resultaat(rootobject));
                             }
 
-                            if (type == "Shopping" && shopping)
+                            if (type == "shopping" && shopping)
                             {
                                 shopping = false;
+                                resultaatlijst.Add(new Resultaat(rootobject));
 
-                                ListEvents.Add(new Event(result.name, huidigetijd, huidigetijd + 200, result.adr_address, type));
 
                             }
 
-                            if (type == "Park" && park)
-                            {
-                                park = false;
-
-                                ListEvents.Add(new Event(result.name, huidigetijd, huidigetijd + 200, result.adr_address, type));
-
-                            }
-                        }
-                    }
-
-
-                    if (1800 <= huidigetijd && huidigetijd < 2000)
-                    {
-                        foreach (string type in result.types)
-                        {
-                            if (type == "Restaurant" && restaurant)
+                            if (type == "restaurant" && restaurant)
                             {
                                 restaurant = false;
 
-                                ListEvents.Add(new Event(result.name, huidigetijd, huidigetijd + 200, result.adr_address, type));
-
-                            }
-                        }
-                    }
-
-                    if (2000 < huidigetijd)
-                    {
-                        foreach (string type in result.types)
-                        {
-                            if (type == "Restaurant" && restaurant)
-                            {
-                                restaurant = false;
-
-                                ListEvents.Add(new Event(result.name, huidigetijd, huidigetijd + 200, result.adr_address, type));
+                                resultaatlijst.Add(new Resultaat(rootobject));
 
                             }
 
-                            if (type == "Nightclub" && nightclub)
+                            if (type == "nightclub" && nightclub)
                             {
                                 nightclub = false;
 
-                                ListEvents.Add(new Event(result.name, huidigetijd, huidigetijd + 200, result.adr_address, type));
+                                resultaatlijst.Add(new Resultaat(rootobject));
 
                             }
                         }
 
-
                     }
-
-
                 }
-                huidigetijd = huidigetijd + 200;
-            }
-            return ListEvents;
+
+                catch { }
+            //}
         }
     }
 }

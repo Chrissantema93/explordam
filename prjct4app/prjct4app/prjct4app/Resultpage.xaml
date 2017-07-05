@@ -24,18 +24,27 @@
                         <ViewCell Height="30">
                             <StackLayout Padding="5">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
-                                    <Label Text="10:00 - 22:00" />
-                                    <Label Text="{Binding name}" />
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
+                                        <Label Text="{Binding BeginTijd}" />
+                                        <Label Text="-" />
+                                        <Label Text="{Binding EindTijd}" />
+                                    </StackLayout>
+
+
+
+                                <Label Text="{Binding Naam}" />
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="Start">
-                                    <Image Source="{Binding icon}}" />
-                                    <Label Text="{Binding formatted_address}" />
+                                    <Image Source="{Binding Logo}}" />
+                                    <Label Text="{Binding Adress}" />
+                                    <Label Text="{Binding afstandvolgende}" />
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            
 
         </Grid>
     </ContentPage>
