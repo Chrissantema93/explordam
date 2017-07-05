@@ -11,8 +11,8 @@
 namespace prjct4app {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("c:\\users\\sebastiaan\\documents\\visual studio 2017\\Projects\\prjct4app\\prjct4app\\prj" +
-        "ct4app\\App.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\Sebastiaan\\Desktop\\4-7-2016 github ding\\prjct4app\\prjct4app\\prjct4app\\Ap" +
+        "p.xaml")]
     public partial class App : global::Xamarin.Forms.Application {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]

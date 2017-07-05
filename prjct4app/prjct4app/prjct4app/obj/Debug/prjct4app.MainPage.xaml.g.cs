@@ -11,8 +11,8 @@
 namespace prjct4app {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\Sebastiaan\\Documents\\Visual Studio 2017\\Projects\\prjct4app\\prjct4app\\prj" +
-        "ct4app\\MainPage.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\Sebastiaan\\Desktop\\4-7-2016 github ding\\prjct4app\\prjct4app\\prjct4app\\Ma" +
+        "inPage.xaml")]
     public partial class MainPage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]

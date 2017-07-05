@@ -38,8 +38,14 @@ namespace prjct4app
             Button button = (Button)sender;
             if (button.Text == "Doorgaan")
             {
-                await DisplayAlert("begintijd", begintijd.ToString(), "cancel");
-                await Navigation.PushModalAsync(new Resultpage(date, begintijd, eindtijd, Museum.IsToggled, Restaurant.IsToggled, Park.IsToggled, Nightclub.IsToggled, Shopping.IsToggled));
+                //await DisplayAlert("begintijd", begintijd.ToString(), "cancel");
+
+                await Navigation.PushModalAsync(new Resultpage(date, begintijd, eindtijd, true, false, false, false, false));
+
+                //await Navigation.PushModalAsync(new Resultpage(date, begintijd, eindtijd, Museum.IsToggled, Restaurant.IsToggled, Park.IsToggled, Nightclub.IsToggled, Shopping.IsToggled));
+                
+                
+                
                 //await DisplayAlert("Clicked", "page: " + button.Text + " bestaat nog niet", "Ok");
                 //await DisplayAlert("datum", date.ToString(), "cancel");
                 

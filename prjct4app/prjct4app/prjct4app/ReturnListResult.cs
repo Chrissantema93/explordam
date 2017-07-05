@@ -52,13 +52,14 @@ namespace prjct4app
 
         public void AddToResultList(WebServiceDetails.Result data)
         {
-            if (data.opening_hours.periods[Day].open.day == Day )
-            {
-                if(Convert.ToInt32(data.opening_hours.periods[Day].open.time) <= Aankomsttijd && Convert.ToInt32(data.opening_hours.periods[Day].close.time) >= Vertektijd)
-                {
-                    datalijst.Add(data);
-                }
-            }   
+            //if (data.opening_hours.periods[Day].open.day == Day )
+            //{
+            //    if(Convert.ToInt32(data.opening_hours.periods[Day].open.time) <= Aankomsttijd && Convert.ToInt32(data.opening_hours.periods[Day].close.time) >= Vertektijd)
+            //    {
+            //        datalijst.Add(data);
+            //    }
+            //}  
+            datalijst.Add(data);
         }
 
         public Option<Iterator<WebServiceDetails.Result>> GetList()

@@ -30,7 +30,6 @@
                         HorizontalOptions="Center"
                         Time="12:00"
                         />
-
             <Button Text="Doorgaan"
                     VerticalOptions="Center"
                     HorizontalOptions="Center"

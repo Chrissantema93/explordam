@@ -33,12 +33,17 @@ namespace prjct4app
             Button button = (Button)sender;
             if (button.Text == "Doorgaan")
             {
-                if (BeginTijd.Time.CompareTo(EindTijd.Time) >= 0)
-                {
-                    await DisplayAlert("Verkeerde tijden", "Aankomst later dan Vertrek", "Ok");
-                }
-                else { await Navigation.PushModalAsync(new InteressePage(DatumSelector.Date, BeginTijd.Time, EindTijd.Time)); }
-                
+                //if (BeginTijd.Time.CompareTo(EindTijd.Time) >= 0)
+                //{
+                //    await DisplayAlert("Verkeerde tijden", "Aankomst later dan Vertrek", "Ok");
+                //}
+                //else { await Navigation.PushModalAsync(new InteressePage(DatumSelector.Date, BeginTijd.Time, EindTijd.Time)); }
+
+                //alles hierboven ingecomment en deze lijn eronder toegevoegd
+
+                //TimeSpan(int hours, int minutes, int seconds);
+                await Navigation.PushModalAsync(new InteressePage(DatumSelector.Date, new TimeSpan(5,30,0), new TimeSpan(8,30,0)));
+
             }
             //await DisplayAlert("Clicked", "page: " + button.Text + " bestaat nog niet", "Ok");
         }
