@@ -19,7 +19,7 @@ namespace prjct4app
         private int eindtijd { get; set; }
         private List<string> intresses;
         private RefineResults refine { get; set; }
-
+        
 
         
 
@@ -28,41 +28,21 @@ namespace prjct4app
             this.begintijd = begintijd;
             this.eindtijd = eindtijd;
             intresses = new List<string>();
-            if (museum) { intresses.Add("Museum"); }
-            if (park) { intresses.Add("Park"); }
-            if (shopping) { intresses.Add("Shopping"); }
-            if (restaurant) { intresses.Add("Restaurant"); }
-            if (nightclub) { intresses.Add("Nightclub"); }
-
-            
-    
-
-
-            //foreach (string intresse in intresses)
-            //{
-            //    //while (ApiResult.GetList().Visit(() => true, results => false))
-            //    //{
-            //    //    //ApiResult.AddToResultList()
-            //    //}
-            //}
-
-            //ApiResult.GetList().Visit(() => { }, (results) => resultlist = results);
-
-            //refine = new RefineResults(resultlist, begintijd, eindtijd);
-            //eventlist = refine.Refine();
-
+            if (museum) { intresses.Add("'museum'"); intresses.Add("'artgallery'"); }
+            if (park) { intresses.Add("'park'"); }
+            if (shopping) { intresses.Add("'shoppingcenter'"); }
+            if (restaurant) { intresses.Add("'restaurant'"); intresses.Add("'cafe'"); intresses.Add("'bar'"); }
+            if (nightclub) { intresses.Add("'nightclub'"); }
 
             InitializeComponent();
             OnGetButtonClicked(this, null);
 
         }
 
-        public async void OnNewButtonClicked(object sender, EventArgs args)
+        public async void visitwebsite(object sender)
         {
-            //statusMessage.Text = "";
-
-            //await App.PersonRepo.AddNewPersonAsync(newPerson.Text);
-            //statusMessage.Text = App.PersonRepo.StatusMessage;
+            Button button = (Button)sender;
+            Device.OpenUri(new Uri(button.ClassId));
         }
 
         public async void OnGetButtonClicked(object sender, EventArgs args)
@@ -71,28 +51,16 @@ namespace prjct4app
             PlaceDetails DetailGetter = new PlaceDetails();
             List<string> placeids = new List<string>();
             refine = new RefineResults(begintijd, eindtijd, DaytoInt.daytoint(date.DayOfWeek));
-            placeids.Add("ChIJvQBNdJ80xEcRmNuMeHpljHw");
-            //placeids.Add("ChIJvQBNdJ80xEcRmNuMeHpljHw");
-            placeids.Add("ChIJ5URIl6I0xEcRdDTjK9tVy0Q");
-            placeids.Add("ChIJxwEpkI00xEcRrRc-GRDUc0M");
-            
-
-            foreach (string placeid in placeids)
-            {
-                //var item = (await DetailGetter.PlaceDetailsWebRequest(placeid)).result;
-                //if (Filter(item)) //filter maken die true of false returned aan de hand van of die hem wel of niet add aan de viewlist
-                //{
-                //    UneListeDuResults.Add(item);
-                //}
-                System.Diagnostics.Debug.WriteLine(placeid);
-                refine.FilterAsync(UneListeDuResults, await DetailGetter.PlaceDetailsWebRequest(placeid));
 
 
-            }
+            placeids = await App.PersonRepo.GetAllPeopleAsync(intresses);
+
+            await refine.FilterAsync(UneListeDuResults, placeids);
+
             for (int i = 0; i < UneListeDuResults.Count - 1; i++)
             {
                 await UneListeDuResults[i].afstandresultaatAsync(UneListeDuResults[i+1]);
-                System.Diagnostics.Debug.WriteLine("POPO" + UneListeDuResults[i].afstandvolgende);
+                
             }
             ObservableCollection<Resultaat> UneListeDuResultsCollection = new ObservableCollection<Resultaat>(UneListeDuResults);
             peopleList.ItemsSource = UneListeDuResultsCollection;

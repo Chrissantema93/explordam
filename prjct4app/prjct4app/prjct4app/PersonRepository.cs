@@ -14,12 +14,13 @@ namespace prjct4app
         private SQLiteAsyncConnection dbConn;
 
         public string StatusMessage { get; set; }
-
+        List<string> placeids = new List<string>();
         public PersonRepository(ISQLitePlatform sqlitePlatform, string dbPath)
         {
             //initialize a new SQLiteConnection 
             if (dbConn == null)
             {
+                
                 var connectionFunc = new Func<SQLiteConnectionWithLock>(() =>
                     new SQLiteConnectionWithLock
                     (
@@ -52,13 +53,25 @@ namespace prjct4app
 
         }
 
-        public async Task<List<Person>> GetAllPeopleAsync()
+        public async Task<List<string>> GetAllPeopleAsync(List<string> category)
         {
-            //return a list of people saved to the Person table in the database
+            foreach (var test in category)
+            {
+                
+                //return a list of people saved to the Person table in the database
+                string query = string.Format("SELECT * FROM people WHERE category = {0}", test);
+                List<Person> people = await dbConn.QueryAsync<Person>(query);
 
-            List<Person> people = await dbConn.QueryAsync<Person>("SELECT * FROM people WHERE name LIKE 'Mark%'");
-            //dbConn.Table<Person>().ToListAsync();
-            return people;
+                Debug.WriteLine(people.Count.ToString());
+                //var combined = string.Join(",", people.ToArray());
+                foreach (var i in people)   
+                {
+                    string restaurant = i.Name;
+
+                    placeids.Add(restaurant);
+                }
+            }
+            return placeids;
         }
     }
 }

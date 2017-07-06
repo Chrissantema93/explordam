@@ -19,8 +19,8 @@ namespace prjct4app
         async void OnButtonClicked(object sender, EventArgs args)
         {
             Button button = (Button)sender;
-            //await Navigation.PushAsync(new Page1());
-            await DisplayAlert("Clicked", "page: " + button.Text + " bestaat nog niet", "Ok");
+
+            await Navigation.PopModalAsync();
         }
     }
 }

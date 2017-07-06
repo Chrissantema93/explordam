@@ -19,6 +19,7 @@ namespace prjct4app
         public string EindTijd { get; set; }
         public string placeid { get; set; }
         public string afstandvolgende { get; set; }
+        public string URL { get; set; }
 
         public Resultaat(RootObject source)
         {
@@ -27,6 +28,7 @@ namespace prjct4app
             this.Naam = source.result.name;
             this.Adress = source.result.formatted_address;
             this.Logo = source.result.icon;
+            this.URL = source.result.url;
             
 
             this.begintijdeindtijd(source);

@@ -18,7 +18,7 @@
         </Grid.ColumnDefinitions>
 
         <ListView x:Name="peopleList"
-              Grid.Row="4" RowHeight="110">
+              Grid.Row="4" RowHeight="125">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell Height="30">
@@ -39,6 +39,8 @@
                                     <Label Text="{Binding Adress}" />
                                     <Label Text="{Binding afstandvolgende}" />
                                 </StackLayout>
+
+                                <Button HorizontalOptions="Center" Text="Visit" Clicked="visitwebsite" ClassId="{Binding URL}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

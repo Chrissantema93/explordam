@@ -10,5 +10,8 @@ namespace People.Models
 
         [MaxLength(250), Unique]
         public string Name { get; set; }
+
+        [MaxLength(250), Column("category")]
+        public string category { get; set; }
     }
 }

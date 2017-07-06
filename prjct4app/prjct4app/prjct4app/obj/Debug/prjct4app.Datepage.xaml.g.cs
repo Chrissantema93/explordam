@@ -11,8 +11,8 @@
 namespace prjct4app {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\Sebastiaan\\Desktop\\4-7-2016 github ding\\prjct4app\\prjct4app\\prjct4app\\Da" +
-        "tepage.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("C:\\Users\\Milan\\Documents\\GitHub\\explordam\\prjct4app\\prjct4app\\prjct4app\\Datepage." +
+        "xaml")]
     public partial class Datepage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "0.0.0.0")]
