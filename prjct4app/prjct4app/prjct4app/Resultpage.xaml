@@ -38,7 +38,8 @@
                                     <Image Source="{Binding Logo}}" />
                                     <Label Text="{Binding Adress}" />
                                     <Label Text="{Binding afstandvolgende}" />
-                                </StackLayout>
+                                    
+                            </StackLayout>
 
                                 <Button HorizontalOptions="Center" Text="Visit" Clicked="visitwebsite" ClassId="{Binding URL}"/>
                             </StackLayout>

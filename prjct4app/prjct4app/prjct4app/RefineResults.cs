@@ -39,7 +39,7 @@ namespace prjct4app
         public async Task FilterAsync(List<Resultaat> resultaatlijst, List<string> placeids)
         {
             int tries = 0;
-            while (resultaatlijst.Count < 5 )//&& tries < limit )
+            while (resultaatlijst.Count < 5 && tries < limit )
             {
                 Debug.WriteLine(placeids[random.Next(0, placeids.Count - 1)]);
 
@@ -50,60 +50,16 @@ namespace prjct4app
                 {
                     Debug.WriteLine(Convert.ToInt32(rootobject.result.opening_hours.periods[0].open.time).ToString() + " " + aankomsttijd.ToString());
                     Debug.WriteLine(Convert.ToInt32(rootobject.result.opening_hours.periods[0].close.time).ToString() + " " + vertrektijd.ToString());
-                    if (aankomsttijd <= Convert.ToInt32(rootobject.result.opening_hours.periods[day].open.time) || Convert.ToInt32(rootobject.result.opening_hours.periods[0].close.time) >= vertrektijd)
+                    if (aankomsttijd <= Convert.ToInt32(rootobject.result.opening_hours.periods[day].open.time))
                     {
                         resultaatlijst.Add(new Resultaat(rootobject));
-                        
-                        //foreach (string type in rootobject.result.types)
-                        //{
-                            
-                        //    Debug.WriteLine(rootobject.result.name + " " + type);
-
-                        //    if (type == "park" && park)
-                        //    {
-                        //        park = false;
-
-                        //        resultaatlijst.Add(new Resultaat(rootobject));
-
-                        //    }
-
-                        //    else if (type == "museum" || type == "art_gallery" && museum)
-                        //    {
-                        //        resultaatlijst.Add(new Resultaat(rootobject));
-                        //    }
-
-                        //    if (type == "shopping" && shopping)
-                        //    {
-                        //        shopping = false;
-                        //        resultaatlijst.Add(new Resultaat(rootobject));
-
-
-                        //    }
-
-                        //    if (type == "restaurant" && restaurant)
-                        //    {
-                        //        restaurant = false;
-
-                        //        resultaatlijst.Add(new Resultaat(rootobject));
-
-                        //    }
-
-                        //    if (type == "nightclub" && nightclub)
-                        //    {
-                        //        nightclub = false;
-
-                        //        resultaatlijst.Add(new Resultaat(rootobject));
-
-                        //    }
-                        //}
-
                     }
                 }
 
                 catch { }
                 tries++;
             }
-            Debug.WriteLine("done");
+            
         }
     }
 }

@@ -20,6 +20,7 @@ namespace prjct4app
         public string placeid { get; set; }
         public string afstandvolgende { get; set; }
         public string URL { get; set; }
+        
 
         public Resultaat(RootObject source)
         {
