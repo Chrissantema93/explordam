@@ -39,18 +39,18 @@ namespace prjct4app
         public async Task FilterAsync(List<Resultaat> resultaatlijst, List<string> placeids)
         {
             int tries = 0;
-            while (resultaatlijst.Count < 5 && tries < limit )
+            while (resultaatlijst.Count < 5 )//&& tries < limit )
             {
                 Debug.WriteLine(placeids[random.Next(0, placeids.Count - 1)]);
 
-                //rootobject = await placedetails.PlaceDetailsWebRequest(placeids[random.Next(0, placeids.Count-1)]);
+                rootobject = await placedetails.PlaceDetailsWebRequest(placeids[random.Next(0, placeids.Count-1)]);
 
 
                 try
                 {
                     Debug.WriteLine(Convert.ToInt32(rootobject.result.opening_hours.periods[0].open.time).ToString() + " " + aankomsttijd.ToString());
                     Debug.WriteLine(Convert.ToInt32(rootobject.result.opening_hours.periods[0].close.time).ToString() + " " + vertrektijd.ToString());
-                    if (true)//aankomsttijd <= Convert.ToInt32(rootobject.result.opening_hours.periods[day].open.time) || Convert.ToInt32(rootobject.result.opening_hours.periods[0].close.time) >= vertrektijd)
+                    if (aankomsttijd <= Convert.ToInt32(rootobject.result.opening_hours.periods[day].open.time) || Convert.ToInt32(rootobject.result.opening_hours.periods[0].close.time) >= vertrektijd)
                     {
                         resultaatlijst.Add(new Resultaat(rootobject));
                         
